@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+        }
+    </style>
+</head>
+
+<body x-data="mainApp()">
+    <!--screen 1 starts-->
+    <section class="bg-[#202328] h-screen overflow-hidden " x-show="screen1">
+
+        <div class="w-full  md:w-[80%] md:m-auto h-full">
+         <!--sheader starts-->
+        <div class="w-full   h-1/4 bg-no-repeat bg-cover " style="background-image:url(./images/Frame-11.svg);">
+           
+        </div>
+        <!--header ends-->
+        <div class="p-8 space-y-3">
+            <div class=" text-xl font-bold text-white w-4/5" >
+                We’re happy to hear that you’d like to work with  Product Design at Chargebee!
+            </div>
+            <div class="text-base text-[#737C8B]">
+                Do take this short 5 min questionnaire to help us understand you better. Remember, there are no wrong answers :)
+            </div>
+            <!--input starts-->
+            <div class="pt-10 pb-8">
+                <label for="email" class="block text-sm font-medium text-white">Email</label>
+                <div class="mt-1">
+                <input type="email" name="email" id="email" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 bg-transparent  rounded-md" placeholder="*****" aria-describedby="email-description">
+                </div>
+                <p class="mt-2 text-sm text-gray-500" id="email-description">We'll only use this for spam.</p>
+            </div>
+            <!--input ends-->
+            <button type="button" @click="onClickMianNext" class="inline-flex justify-center w-full items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Let's Go
+                
+            </button>
+        </div>
+
+      
+       
+
+  
+        
+
+
+    </div>
+        
+    </section>
+
+    <!--screen 1 ends-->
+
+<!--screen 2 starts-->
+​
+    <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen2">
+
+        <div class="">
+​
+        <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+            <!--Question number and emoji starts-->
+            <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">1</spam>/5
+            </div>
+            <div class="">
+                <img class="" src="/images/elephant.svg" alt="elephant">
+            </div>
+            <!--Question number and emoji ends-->
+        </div>
+​
+        <!--question text starts-->
+        <div class="text-2xl mt-8 font-bold text-gray-700">
+            Here’s an elephant. You can’t give it away or sell it. What will you do with it?
+        </div>
+        <!--question text ends-->
+
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-5">
+
+​           <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+        <!--answer options starts-->
+        <fieldset>
+            <legend class="sr-only ">Server size</legend>
+            <div class=" mt-4 ">
+                <!--
+                    Checked: "border-transparent", Not Checked: "border-gray-300"
+                    Active: "border-indigo-500 ring-2 ring-indigo-500"
+                -->
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a1'}"
+                >
+                    <input type="radio" x-model="question1" name="question1" value="q1a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                    <div class="flex items-center">
+                    <div class="text-sm">
+                        <p id="server-size-0-label" class="font-medium text-lg text-gray-700">I will train it and ride it to work and give my colleagues rides also</p>
+                    </div>
+                    </div>
+                    <!--
+                    Active: "border", Not Active: "border-2"
+                    Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+​
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a2'}">
+                    <input type="radio" x-model="question1" value="q1a2" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I am too busy to keep an elephant. I would send it on a vacation</p>
+                      </div>
+                    </div>
+                    <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+​
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a3'}">
+                    <input type="radio" x-model="question1" value="q1a3" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I would take it around and charge people for taking photos with it</p>
+                      </div>
+                    </div>
+                    <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a3'}">
+                    <input type="radio" x-model="question1" value="q1a3" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I would take it around and charge people for taking photos with it</p>
+                      </div>
+                    </div>
+                    <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a3'}">
+                    <input type="radio" x-model="question1" value="q1a3" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I would take it around and charge people for taking photos with it</p>
+                      </div>
+                    </div>
+                    <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a3'}">
+                    <input type="radio" x-model="question1" value="q1a3" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I would take it around and charge people for taking photos with it</p>
+                      </div>
+                    </div>
+                    <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-500", Not Checked: "border-transparent"
+                    -->
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+            </div>
+        </fieldset>
+        <!--answer options ends-->
+​
+        <!--button starts-->
+        <div class="flex justify-end">
+            <button @click="onclickQ1Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Next
+                <!-- Heroicon name: solid/mail -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+              </button>
+        </div>
+        
+​
+        <!--button ends-->
+      </div>
+​
+    </div>
+    <!--screen 2 ends-->
+
+    <!--screen 3-->
+
+    <div class="bg-gray-400 h-screen" x-show="screen3 == true"> test</div>
+
+     <!--screen 4-->
+
+     <div class="bg-blue-400 h-screen" x-show="screen4 == true"> screen 4</div>
+
+
+    <script>
+
+        function mainApp() {
+            return {
+
+                code: [
+                    {'code1': "hgjasgd66", name: "maya"}
+                ],
+
+                question1: null,
+                question2: null,
+                open: false,
+                screen1: false,
+                screen2: false,
+                screen3: false,
+                screen4: false,
+                active: false,
+                count: '',
+                error: false,
+                error2: false,
+
+                init(){
+                  this.screen1 =true;
+                    this.screen2 = false;
+                   
+                    this.$watch('question1', value => {
+                        //console.log(value)
+                        if(value === 'q1a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    })
+                },
+
+                onClickMianNext(){
+                  this.screen1 = false;
+                  this.screen2 = true;
+                },
+
+                onclickQ1Answer(){
+                    if(!this.question1) {
+                        this.error = true;
+
+                        
+                      //  return;
+                    } else {
+                        console.log('test')
+                        this.screen2 = false;
+                        this.screen4 = true;
+                    }
+                },
+
+                onclickQ2Answer(){
+                    if(!this.question2) {
+                        this.error2 = true;
+                        
+                        return;
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+</html>

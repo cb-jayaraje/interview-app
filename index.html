@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+        }
+    </style>
+</head>
+
+<body x-data="mainApp()">
+    <!--screen 1 starts-->
+    <section class="bg-[#202328] h-screen overflow-hidden " x-show="screen1">
+
+        <div class="w-full  md:w-[80%] md:m-auto h-full">
+         <!--sheader starts-->
+        <div class="w-full   h-1/4 bg-no-repeat bg-cover " style="background-image:url(./images/Frame-11.svg);">
+           
+        </div>
+        <!--header ends-->
+        <div class="p-8 space-y-3">
+            <div class=" text-xl font-bold text-white w-4/5" >
+                We’re happy to hear that you’d like to work with  Product Design at Chargebee!
+            </div>
+            <div class="text-base text-[#737C8B]">
+                Do take this short 5 min questionnaire to help us understand you better. Remember, there are no wrong answers :)
+            </div>
+            <!--input starts-->
+            <div class="pt-10 pb-8">
+                <label for="email" class="block text-sm font-medium text-white">Code</label>
+                <div class="mt-1">
+                <input type="text" name="code" id="code" x-model="enteredCode" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 bg-transparent  rounded-md" placeholder="*****" aria-describedby="email-description">
+                </div>
+                <p class="mt-2 text-sm text-gray-500" id="email-description">We'll only use this for spam.</p>
+            </div>
+            <!--input ends-->
+            <div class="bg-red-600 text-white text-sm rounded-md px-3 py-2" x-show="loginError">Login Error</div>
+            <button type="button" @click="onClickMianNext" class="inline-flex justify-center w-full items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Let's Go
+                
+            </button>
+        </div>
+
+      
+       
+
+  
+        
+
+
+    </div>
+        
+    </section>
+
+    <!--screen 1 ends-->
+
+<!--screen 2 starts-->
+​
+    <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen2">
+
+        <div class="">
+​
+        <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+            <!--Question number and emoji starts-->
+            <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">1</spam>/5
+            </div>
+            <div class="">
+                <img class="" src="/images/elephant.svg" alt="elephant">
+            </div>
+            <!--Question number and emoji ends-->
+        </div>
+​
+        <!--question text starts-->
+        <div class="text-2xl mt-8 font-bold text-gray-700">
+            Here’s an elephant. You can’t give it away or sell it. What will you do with it?
+        </div>
+        <!--question text ends-->
+        <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-5">
+
+​           
+        <!--answer options starts-->
+        <fieldset>
+            <div class=" mt-4 space-y-3">
+                <!--
+                    Checked: "border-transparent", Not Checked: "border-gray-300"
+                    Active: "border-indigo-500 ring-2 ring-indigo-500"
+                -->
+             
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a1'}"
+                >
+                    <input type="radio" x-model="question1" name="question1" value="q1a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                    <div class="flex items-center">
+                    <div class="text-sm">
+                        <p id="server-size-0-label" class="font-medium text-lg text-gray-700">I will train it and ride it to work and give my colleagues rides also</p>
+                    </div>
+                    </div>
+                   
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a2'}">
+                    <input type="radio" x-model="question1" value="q1a2" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I am too busy to keep an elephant. I would send it on a vacation</p>
+                      </div>
+                    </div>
+                    
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question1 === 'q1a3'}">
+                    <input type="radio" x-model="question1" value="q1a3" name="question1" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I would take it around and charge people for taking photos with it</p>
+                      </div>
+                    </div>
+                   
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+            </div>
+        </fieldset>
+        <!--answer options ends-->
+​
+        <!--button starts-->
+        <div class="flex justify-end">
+
+        
+            <button @click="onclickQ1Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Next
+                <!-- Heroicon name: solid/mail -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+              </button>
+        </div>
+        
+​
+        <!--button ends-->
+      </div>
+​
+    </div>
+    <!--screen 2 ends-->
+
+    <!--screen 3-->
+    <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen3">
+
+      <div class="">
+​
+      <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+          <!--Question number and emoji starts-->
+          <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">2</spam>/5
+          </div>
+          <div class="">
+              <img class="" src="/images/super-hero.png" alt="elephant">
+          </div>
+          <!--Question number and emoji ends-->
+      </div>
+​
+      <!--question text starts-->
+      <div class="text-2xl mt-8 font-bold text-gray-700">
+        Which superhero represents you best?
+      </div>
+      <!--question text ends-->
+      <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+
+  </div>
+
+  <div class="flex-1 overflow-y-auto p-5">
+
+​           
+      <!--answer options starts-->
+      <fieldset>
+          <div class=" mt-4 space-y-3">
+            
+           
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question2 === 'q2a1'}"
+              >
+                  <input type="radio" x-model="question2" name="question2" value="q2a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                  <div class="flex items-center">
+                  <div class="text-sm">
+                      <p id="server-size-0-label" class="font-medium text-lg text-gray-700">Batman: Unsung hero behind the scenes with a secret identity </p>
+                  </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+              </label>
+
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question2 === 'q2a2'}">
+                  <input type="radio" x-model="question2" value="q2a2" name="question2"  class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">Ironman: Comfortable being in the limelight, always on top of the latest trends</p>
+                    </div>
+                  </div>
+                  
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question2 === 'q2a3'}">
+                  <input type="radio" x-model="question2" value="q2a3" name="question2" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">Spiderman: Master of the multi-verse, juggle projects and contexts, uses webs to connect their world.</p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question2 === 'q2a4'}">
+                  <input type="radio" x-model="question2" value="q2a4" name="question2" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">Dr. Strange: Manage time super efficiently</p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+          </div>
+      </fieldset>
+      <!--answer options ends-->
+​
+      <!--button starts-->
+      <div class="flex justify-between">
+        <button @click="onClickbackScreen3" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+           
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          back
+        
+        
+        </button>
+          <button @click="onclickQ2Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Next
+              <!-- Heroicon name: solid/mail -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </button>
+      </div>
+      
+​
+      <!--button ends-->
+    </div>
+​
+  </div>
+
+  <!--screen 3 ends-->
+  
+
+     <!--screen 4-->
+     <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen4">
+
+      <div class="">
+​
+      <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+          <!--Question number and emoji starts-->
+          <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">3</spam>/5
+          </div>
+          <div class="">
+              <img class="" src="/images/mom.png" alt="elephant">
+          </div>
+          <!--Question number and emoji ends-->
+      </div>
+​
+      <!--question text starts-->
+      <div class="text-2xl mt-8 font-bold text-gray-700">
+        Your mum visits and complains about your messy room. What next? 
+      </div>
+      <!--question text ends-->
+      <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+
+  </div>
+
+  <div class="flex-1 overflow-y-auto p-5">
+
+​           
+      <!--answer options starts-->
+      <fieldset>
+          <div class=" mt-4 space-y-3">
+            
+           
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a1'}"
+              >
+                  <input type="radio" x-model="question3" name="question3" value="q3a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                  <div class="flex items-center">
+                  <div class="text-sm">
+                      <p id="server-size-0-label" class="font-medium text-lg text-gray-700">I tell her that I can find order only in the chaos </p>
+                  </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+              </label>
+
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a2'}">
+                  <input type="radio" x-model="question3" value="q3a2" name="question3"  class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I start to cluster all the stuff by several factors: by color, by dimension, by frequency of usage</p>
+                    </div>
+                  </div>
+                  
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a3'}">
+                  <input type="radio" x-model="question3" value="q3a3" name="question3" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I take photographs to my old stuff and try to sell them </p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a4'}">
+                  <input type="radio" x-model="question3" value="q3a4" name="question3" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I look at every item and ask myself if its sparks joy before deciding whether to keep it or throw it away</p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a5'}">
+                  <input type="radio" x-model="question3" value="q3a5" name="question3" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I do a cleaning routine but the results last only for a week or two</p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question3 === 'q3a6'}">
+                  <input type="radio" x-model="question3" value="q3a6" name="question3" value="Startup" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I ask my mum to help me</p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+          </div>
+      </fieldset>
+      <!--answer options ends-->
+​
+      <!--button starts-->
+      <div class="flex justify-between">
+        <button @click="onClickbackScreen4" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+           
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          back
+        
+        
+        </button>
+          <button @click="onclickQ3Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Next
+              <!-- Heroicon name: solid/mail -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </button>
+      </div>
+      
+​
+      <!--button ends-->
+    </div>
+​
+  </div>
+    <!--screen 4 ends-->
+
+
+
+     <!--screen 5-->
+     <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen5">
+
+      <div class="">
+​
+      <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+          <!--Question number and emoji starts-->
+          <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">4</spam>/5
+          </div>
+          <div class="">
+              <img class="" src="/images/emoji-laptop.png" alt="elephant">
+          </div>
+          <!--Question number and emoji ends-->
+      </div>
+​
+      <!--question text starts-->
+      <div class="text-2xl mt-8 font-bold text-gray-700">
+        What is your preferred working style?
+      </div>
+      <!--question text ends-->
+      <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+
+  </div>
+
+  <div class="flex-1 overflow-y-auto p-5">
+
+​           
+      <!--answer options starts-->
+      <fieldset>
+          <div class=" mt-4 space-y-3">
+            
+           
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question4 === 'q4a1'}"
+              >
+                  <input type="radio" x-model="question4" name="question4" value="q4a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                  <div class="flex items-center">
+                  <div class="text-sm">
+                      <p id="server-size-0-label" class="font-medium text-lg text-gray-700">I like listening to music or sipping a beverage. I‘m comfortable making decisions independently </p>
+                  </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+              </label>
+
+              <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+              :class="{'border-[#F97316] ring-2 ring-[#F97316]': question4 === 'q4a2'}">
+                  <input type="radio" x-model="question4" value="q4a2" name="question4"  class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I like having work sessions with my team members to validate ideas and brainstorm</p>
+                    </div>
+                  </div>
+                  
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+                <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question4 === 'q4a3'}">
+                  <input type="radio" x-model="question4" value="q4a3" name="question4" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p id="server-size-1-label" class="font-medium text-lg text-gray-700">I look to my manager to give me a brief or some direction to start </p>
+                    </div>
+                  </div>
+                 
+                  <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+
+               
+          </div>
+      </fieldset>
+      <!--answer options ends-->
+​
+      <!--button starts-->
+      <div class="flex justify-between">
+        <button @click="onClickbackScreen5" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+           
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          back
+        
+        
+        </button>
+          <button @click="onclickQ4Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Next
+              <!-- Heroicon name: solid/mail -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </button>
+      </div>
+      
+​
+      <!--button ends-->
+    </div>
+​
+  </div>
+    <!--screen 5 ends-->
+
+
+
+       <!--screen 6-->
+       <div class="bg-white  px-8 flex flex-col h-screen" x-show="screen6">
+
+        <div class="">
+  ​
+        <div class="w-full h-1/8  justify-between place-items-end flex md:w-[80%] md:m-auto lg:w-[100%]">
+            <!--Question number and emoji starts-->
+            <div class="text-2xl text-gray-400 align-bottom"> <spam class="text-gray-700 text-4xl font-extrabold">5</spam>/5
+            </div>
+            <div class="">
+                <img class="" src="/images/beach.png" alt="elephant">
+            </div>
+            <!--Question number and emoji ends-->
+        </div>
+  ​
+        <!--question text starts-->
+        <div class="text-2xl mt-8 font-bold text-gray-700">
+          It’s the weekend! Time to have some fun. Which friend are you?
+        </div>
+        <!--question text ends-->
+        <div class="bg-red-400 shadow-md px-3 rounded-md" x-show="error">Error</div>
+  
+    </div>
+  
+    <div class="flex-1 overflow-y-auto p-5">
+  
+  ​           
+        <!--answer options starts-->
+        <fieldset>
+            <div class=" mt-4 space-y-3">
+              
+             
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none" 
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question5 === 'q5a1'}"
+                >
+                    <input type="radio" x-model="question5" name="question5" value="q5a1" class="sr-only" aria-labelledby="server-size-0-label" aria-describedby="server-size-0-description-0 server-size-0-description-1">
+                    <div class="flex items-center">
+                    <div class="text-sm">
+                        <p id="server-size-0-label" class="font-medium text-lg text-gray-700">The one motivating the rest to get out and try something new</p>
+                    </div>
+                    </div>
+                   
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                </label>
+  
+                <label class="relative block bg-white border rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none"
+                :class="{'border-[#F97316] ring-2 ring-[#F97316]': question5 === 'q5a2'}">
+                    <input type="radio" x-model="question5" value="q5a2" name="question5"  class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">The one convincing everyone to meet at your favourite restaurant so you can eat your favourite food</p>
+                      </div>
+                    </div>
+                    
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+  
+                  <label class="relative block bg-white rounded-lg shadow-sm px-6 py-4 cursor-pointer sm:flex sm:justify-between focus:outline-none border "
+                  :class="{'border-[#F97316] ring-2 ring-[#F97316]': question5 === 'q5a3'}">
+                    <input type="radio" x-model="question5" value="q5a3" name="question5" class="sr-only" aria-labelledby="server-size-1-label" aria-describedby="server-size-1-description-0 server-size-1-description-1">
+                    <div class="flex items-center">
+                      <div class="text-sm">
+                        <p id="server-size-1-label" class="font-medium text-lg text-gray-700">The one who refuses to leave the house until someone calls to motivate you or shows up to get you out.</p>
+                      </div>
+                    </div>
+                   
+                    <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
+                  </label>
+  
+                 
+            </div>
+        </fieldset>
+        <!--answer options ends-->
+  ​
+        <!--button starts-->
+        <div class="flex justify-between">
+          <button @click="onClickbackScreen6" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+           
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            back
+          
+          
+          </button>
+            <button @click="onclickQ5Answer" type="button" class="inline-flex  items-center px-6 py-3 mt-8 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-[#F97316] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Next
+                <!-- Heroicon name: solid/mail -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+              </button>
+        </div>
+        
+  ​
+        <!--button ends-->
+      </div>
+  ​
+    </div>
+      <!--screen 6 ends-->
+
+      <!--screen 7 starts-->
+      <div class="bg-[#202328]  px-8 flex flex-col h-screen" x-show="screen7">
+      <div class="w-full md:w-[80%] md:m-auto h-full p-8">
+          <img src="./images/Logo.svg" alt="Chargebee Design">
+          <img class="py-10 animate-wiggle" src="./images/partypopper.png" alt="Party popper">
+          <div class="space-y-3">
+              <h2 class="text-xl font-bold text-white w-4/5" >
+                  And you're done!
+              </h2>
+              <div class="text-base text-[#737C8B]">
+                  <p>
+                      Thank you for your responses, <span class="text-yellow-400" x-text="userName"></span>! We'll be in touch as soon as possible with next steps.
+                      <br>
+                      <br>
+                      Have a splendid day!    
+                  </p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--screen 7 ends-->
+
+
+    <script>
+
+        function mainApp() {
+            return {
+
+                code: [
+                    {'code': "111111", name: "Maya"},
+                    {'code': "222222", name: "Jay"},
+                ],
+                enteredCode: null,
+                question1: null,
+                question2: null,
+                question3: null,
+                question4: null,
+                question5: null,
+                open: false,
+                screen1: false,
+                screen2: false,
+                screen3: false,
+                screen4: false,
+                screen5: false,
+                screen6: false,
+                screen7: false,
+                active: false,
+                count: '',
+                error: false,
+                error2: false,
+                loginError: false,
+                userName: null,
+
+                init(){
+                  this.screen1 =true;
+                    this.screen2 = false;
+
+                    if(localStorage.getItem("identifier")){
+                  let user = localStorage.getItem("identifier");
+                  user = JSON.parse(user)
+
+                  this.userName = user['name'];
+
+                  if(user) {
+                    this.screen1 = false;
+                    this.screen2 = true;
+                  }
+                }
+
+                  let answer1 =  localStorage.getItem("q1");
+                  if(answer1) {
+                    this.question1 = answer1
+                  }
+                  let answer2 =  localStorage.getItem("q2");
+                  if(answer2) {
+                    this.question2 = answer2
+                  }
+
+                  let answer3 =  localStorage.getItem("q3");
+                  if(answer3) {
+                    this.question3 = answer3
+                  }
+
+                  let answer4 =  localStorage.getItem("q4");
+                  if(answer4) {
+                    this.question4 = answer4
+                  }
+
+                  let answer5 =  localStorage.getItem("q5");
+                  if(answer5) {
+                    this.question5 = answer5
+                  }
+                   
+                    this.$watch('question1', value => {
+                        console.log(value)
+                        localStorage.setItem("q1", value);
+                        this.question1 = value;
+                        if(value === 'q1a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    });
+
+                    this.$watch('question2', value => {
+                        console.log(value)
+                        localStorage.setItem("q2", value);
+                        if(value === 'q2a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    });
+
+                    this.$watch('question3', value => {
+                        console.log(value)
+                        localStorage.setItem("q3", value);
+                        if(value === 'q3a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    });
+
+                    this.$watch('question4', value => {
+                        console.log(value)
+                        localStorage.setItem("q4", value);
+                        if(value === 'q4a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    });
+
+                    this.$watch('question5', value => {
+                        console.log(value)
+                        localStorage.setItem("q5", value);
+                        if(value === 'q5a1'){
+                            this.active = true
+                            this.count = 1
+                        }else {
+                            this.active = false
+                        }
+                    });
+                },
+
+                onClickMianNext(){
+
+                  console.log(this.code)
+
+                  let obj = this.code.find(o => o.code === this.enteredCode);
+                  
+                  if(obj) {
+                    this.screen1 = false;
+                  this.screen2 = true;
+                  localStorage.setItem("identifier", JSON.stringify(obj));
+                  }else {
+                    this.loginError = true
+                  }
+
+                 
+                },
+
+                onclickQ1Answer(){
+                    if(!this.question1) {
+                        this.error = true;
+
+                        
+                      //  return;
+                    } else {
+                        console.log('test')
+                        this.screen2 = false;
+                        this.screen3 = true;
+                        this.error = false;
+                        
+                    }
+                },
+
+                onclickQ2Answer(){
+                  
+                    if(!this.question2) {
+                      console.log(this.question2)
+                        this.error = true;
+                    }else {
+                      this.error = false;
+                      this.screen3= false;
+                      this.screen4 = true;
+                    }
+
+                    console.log(this.error)
+                },
+
+                onclickQ3Answer(){
+                  
+                  if(!this.question3) {
+                    console.log(this.question2)
+                      this.error = true;
+                  }else {
+                    this.error = false;
+                    this.screen4= false;
+                    this.screen5 = true;
+                  }
+
+                  console.log(this.error)
+              },
+
+              onclickQ4Answer(){
+                  
+                  if(!this.question4) {
+                      this.error = true;
+                  }else {
+                    this.error = false;
+                    this.screen5= false;
+                    this.screen6 = true;
+                  }
+
+                  console.log(this.error)
+              },
+
+              onclickQ5Answer(){
+                  
+                  if(!this.question5) {
+                    console.log(this.question5)
+                      this.error = true;
+                  }else {
+                    this.error = false;
+                    this.screen6= false;
+                   this.screen7 = true;
+                  }
+
+                  console.log(this.error)
+              },
+
+
+              onClickbackScreen3(){
+                this.error = false
+                this.screen3 = false;
+                this.screen2 = true;
+              },
+
+              onClickbackScreen4(){
+                this.error = false
+                this.screen4 = false;
+                this.screen3 = true;
+              },
+
+              onClickbackScreen5(){
+                this.error = false
+                this.screen5 = false;
+                this.screen4 = true;
+              },
+
+              onClickbackScreen6(){
+                this.error = false
+                this.screen6 = false;
+                this.screen5 = true;
+              }
+
+
+
+            }
+        }
+    </script>
+
+
+</body>
+</html>
